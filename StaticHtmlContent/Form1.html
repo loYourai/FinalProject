@@ -1,0 +1,59 @@
+using System;
+using System.Windows.Forms;
+
+namespace CalendarApp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // При загрузке формы устанавливаем текущую дату
+            dateTimePicker1.Value = DateTime.Today;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            // При изменении выбранной даты обновляем календарь
+            UpdateCalendar();
+        }
+
+        private void UpdateCalendar()
+        {
+            // Получаем выбранную дату
+            DateTime selectedDate = dateTimePicker1.Value;
+
+            // Очищаем содержимое календаря
+            dataGridView1.Rows.Clear();
+
+            // Определяем первый день текущего месяца
+            DateTime firstDayOfMonth = new DateTime(selectedDate.Year, selectedDate.Month, 1);
+
+            // Определяем последний день текущего месяца
+            DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            // Заполняем календарь днями месяца
+            int row = 0;
+            int col = (int)firstDayOfMonth.DayOfWeek;
+            for (DateTime date = firstDayOfMonth; date <= lastDayOfMonth; date = date.AddDays(1))
+            {
+                if (col == 7)
+                {
+                    col = 0;
+                    row++;
+                }
+                if (col == 0)
+                    dataGridView1.Rows.Add();
+                dataGridView1[col, row].Value = date.Day.ToString();
+                col++;
+            }
+
+            // Устанавливаем заголовок формы с названием текущего месяца и года
+            this.Text = selectedDate.ToString("MMMM yyyy");
+        }
+    }
+}

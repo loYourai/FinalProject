@@ -1,0 +1,36 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Create Meeting";
+}
+<div>
+    <h1 class="display-4">Create Meeting</h1>
+    <p></p>
+</div>
+<body>
+
+    <form action="register.php" method="post">
+        <script>document.getElementById('davaToday').valueAsDate = new Date();</script>
+        <h2>Выберите дату</h2>
+        <input class="calendar2"  type="date" name="Date" id="davaToday">
+        
+        <div class="text-field" >
+            <label class="text-field__label" ><strong><b>Введите событие для календаря</b></strong></label>
+            <input class="text-field__input" type="text" name="themaMeet">
+
+        </div>
+
+       
+
+        <tr>
+            <td>
+                <input class="SuperButton" style="border-radius:5px;" style="background-color:#1c87c9;" type="submit" value="Сохранить"></input>
+            </td>
+            <td>
+                <input class="SuperButton2" style="border-radius:5px;" style="background-color:red;"  type="reset" value="Очистить">
+            </td>
+        </tr>
+    </form>
+</body>
+
+
