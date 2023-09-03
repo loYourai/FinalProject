@@ -10,14 +10,14 @@
 <body>
 
     <form action="register.php" method="post">
-        <script>document.getElementById('davaToday').valueAsDate = new Date();</script>
-        <h2>Выберите дату</h2>
-        <input class="calendar2"  type="date" name="Date" id="davaToday">
         
+
+        <h2>Выберите дату и время</h2>
+        <input type="datetime-local" min="00:00" id="StartDate" name="StartDate" value="">
         <div class="text-field" >
             <label class="text-field__label" ><strong><b>Введите событие для календаря</b></strong></label>
             <input class="text-field__input" type="text" name="themaMeet">
-
+            
         </div>
 
        
@@ -31,6 +31,8 @@
             </td>
         </tr>
     </form>
+
 </body>
+
 
 

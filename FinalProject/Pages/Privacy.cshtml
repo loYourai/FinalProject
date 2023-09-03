@@ -1,7 +1,57 @@
-﻿@page
+﻿
+
+@page
 @model PrivacyModel
 @{
     ViewData["Title"] = "Create Meeting";
 }
 
 
+
+<div class="table-responsive">
+    <a href="https://localhost:7089/" class="btn btn-primary">Create</a>
+    <table class="table">
+        <thead>
+
+            @foreach (var meeting in Model.Meetings)
+                {
+                <tr>
+                    <td>@meeting.Name</td>
+                    <td>@meeting.StartDate</td>
+                    <td>@meeting.EndDate</td>
+                    <td class="text-center"><a href="#" class="btn btn-primary">View</a></td>
+                    <td class="text-center"><a href="@Url.Action("Edit", "Meeting", meeting.Id)" class="btn btn-primary">Edit</a></td>
+                    <td class="text-center"><a href="#" class="btn btn-danger">Delete</a></td>
+                </tr>
+                }
+            
+        </thead>
+       
+    </table>
+</div>
+<div class="table-responsive">
+    <a href="@Url.Action("Create", "Meeting")" class="btn btn-primary">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>StartTime</th>
+                <th>StartDate</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var meeting in Model.Meeting)
+            {
+                <tr>
+                    <td>@meeting.Name</td>
+                    <td>@meeting.StartTime</td>
+                    <td>@meeting.StartDate</td>
+                    <td class="text-center"><a href="@Url.Action("Edit", "Meeting", meeting.Id)" class="btn btn-primary">Edit</a></td>
+                    <td class="text-center"><a href="#" class="btn btn-danger">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
